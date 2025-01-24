@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Imágenes</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Galería de Imágenes</h1>
+    <img id="imagen" src="gato.jpg" alt="Gato">
+    <div class="botones">
+        <button onclick="mostrarGato()">Mostrar Gato</button>
+        <button onclick="mostrarSigma()">Mostrar Sigma</button>
+    </div>
+
+    <script>
+        function mostrarGato() {
+            document.getElementById("imagen").src = "gato.jpg";
+            document.getElementById("imagen").alt = "Gato";
+        }
+
+        function mostrarSigma() {
+            document.getElementById("imagen").src = "sigma.jpg";
+            document.getElementById("imagen").alt = "Sigma";
+        }
+    </script>
+</body>
+</html>
