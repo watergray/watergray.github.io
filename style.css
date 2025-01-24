@@ -1,75 +1,59 @@
+/* style.css */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.main-container {
-  display: flex;
-  gap: 30px;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-.gallery-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.icon-list {
+    display: flex;
+    gap: 10px;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 150px);
-  gap: 10px;
+.icon {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #fff;
+    border-radius: 10px;
 }
 
-.card {
-  position: relative;
-  width: 150px;
-  height: 150px;
+.video-container {
+    position: relative;
+    text-align: center;
 }
 
-.card .background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: url('assets/background.png') no-repeat center center;
-  background-size: cover;
-}
-
-.card .icon {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.character-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-#character-video {
-  width: 300px;
-  height: 300px;
+.character-video {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
 }
 
 #character-name {
-  font-size: 24px;
-  text-align: center;
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.buttons {
-  display: flex;
-  gap: 10px;
+.controls {
+    display: flex;
+    gap: 20px;
 }
 
-.buttons img {
-  width: 50px;
-  cursor: pointer;
+.button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
