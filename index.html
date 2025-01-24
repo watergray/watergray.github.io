@@ -1,59 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambiar Imágenes</title>
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        img {
-            max-width: 300px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        .botones {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videos Interactivos</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    video {
+      max-width: 100%;
+      max-height: 80%;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: gray;
+    }
+  </style>
 </head>
 <body>
-    <h1>Galería de Imágenes</h1>
-    <img id="imagen" src="Gato.jpg" alt="Gato">
-    <div class="botones">
-        <button onclick="mostrarGato()">Mostrar Gato</button>
-        <button onclick="mostrarSigma()">Mostrar Sigma</button>
-    </div>
+  <video id="videoPlayer" autoplay loop>
+    <source src="gato.webm" type="video/webm">
+    Tu navegador no soporta el formato de video.
+  </video>
 
-    <script>
-        function mostrarGato() {
-            document.getElementById("imagen").src = "Gato.jpg";
-            document.getElementById("imagen").alt = "Gato";
-        }
+  <div class="controls">
+    <button onclick="changeVideo('gato.webm')">Ver Gato</button>
+    <button onclick="changeVideo('conejo.webm')">Ver Conejo</button>
+  </div>
 
-        function mostrarSigma() {
-            document.getElementById("imagen").src = "Sigma.jpg";
-            document.getElementById("imagen").alt = "Sigma";
-        }
-    </script>
+  <script>
+    function changeVideo(video) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      videoPlayer.src = video;
+      videoPlayer.play();
+    }
+  </script>
 </body>
 </html>
