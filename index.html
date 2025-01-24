@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería de Personajes</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personajes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="main-container">
-    <!-- Galería de personajes -->
-    <div class="gallery-container">
-      <div class="gallery"></div>
+    <div class="container">
+        <!-- Lista de iconos -->
+        <div class="icon-list">
+            <video src="assets/gatoicon.webm" class="icon" id="gato-icon" autoplay muted loop></video>
+            <video src="assets/conejoicon.webm" class="icon" id="conejo-icon" autoplay muted loop></video>
+        </div>
+        
+        <!-- Video principal -->
+        <div class="video-container">
+            <video src="assets/characters/gato.webm" class="character-video" id="character-video" autoplay muted loop></video>
+            <p id="character-name">Gato</p>
+        </div>
+        
+        <!-- Botones -->
+        <div class="controls">
+            <img src="izquierda.png" class="button" id="left-button" alt="Izquierda">
+            <img src="derecha.png" class="button" id="right-button" alt="Derecha">
+        </div>
     </div>
 
-    <!-- Detalle del personaje -->
-    <div class="character-detail">
-      <video id="character-video" autoplay loop></video>
-      <p id="character-name"></p>
-      <div class="buttons">
-        <img id="prev-btn" src="assets/izquierda.png" alt="Anterior">
-        <img id="next-btn" src="assets/derecha.png" alt="Siguiente">
-      </div>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    <audio id="click-sound" src="assets/click.ogg"></audio>
+    <script src="script.js"></script>
 </body>
 </html>
