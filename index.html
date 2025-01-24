@@ -25,21 +25,19 @@
 
     .controls {
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
 
-    button {
-      background-color: white;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      font-size: 16px;
+    .controls img {
+      width: 50px;
+      height: 50px;
       cursor: pointer;
-      border-radius: 5px;
     }
 
-    button:hover {
-      background-color: gray;
+    .controls img:hover {
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -50,14 +48,26 @@
   </video>
 
   <div class="controls">
-    <button onclick="changeVideo('gato.webm')">Ver Gato</button>
-    <button onclick="changeVideo('conejo.webm')">Ver Conejo</button>
+    <img src="izquierda.png" alt="Izquierda" onclick="changeVideo(-1)">
+    <img src="derecha.png" alt="Derecha" onclick="changeVideo(1)">
   </div>
 
   <script>
-    function changeVideo(video) {
+    const videos = ["gato.webm", "conejo.webm"]; // Lista de videos
+    let currentIndex = 0;
+
+    function changeVideo(direction) {
+      currentIndex += direction;
+
+      // Si se sale del rango, vuelve al inicio o final
+      if (currentIndex < 0) {
+        currentIndex = videos.length - 1; // Ir al último video
+      } else if (currentIndex >= videos.length) {
+        currentIndex = 0; // Volver al primer video
+      }
+
       const videoPlayer = document.getElementById('videoPlayer');
-      videoPlayer.src = video;
+      videoPlayer.src = videos[currentIndex];
       videoPlayer.play();
     }
   </script>
