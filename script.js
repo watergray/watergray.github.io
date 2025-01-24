@@ -3,12 +3,12 @@ const characters = [
   { 
     name: "물", 
     videoSrc: "assets/characters/gato.webm", 
-    iconSrc: "assets/gatoicon.png" 
+    iconSrc: "assets/gatoicon.webm" 
   },
   { 
     name: "Conejo", 
     videoSrc: "assets/characters/conejo.webm", 
-    iconSrc: "assets/conejoicon.png" 
+    iconSrc: "assets/conejoicon.webm" 
   }
 ];
 
