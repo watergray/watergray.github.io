@@ -1,7 +1,7 @@
 // Videos de los personajes
 const videos = [
   { name: "물", src: "assets/characters/gato.webm" },
-  { name: "Conejo", src: "assets/characters/conejo.webm" }
+  { name: "토끼", src: "assets/characters/conejo.webm" }
 ];
 
 let currentIndex = 0;
