@@ -1,14 +1,14 @@
-// Lista de personajes con sus videos y URLs de íconos
+// Lista de personajes con sus videos e íconos
 const characters = [
   { 
     name: "물", 
     videoSrc: "assets/characters/gato.webm", 
-    iconUrl: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-4A6B809D835C03042871C7B5D02C36ED-Png/150/150/AvatarHeadshot/Webp/noFilter" 
+    iconSrc: "assets/gatoicon.png" 
   },
   { 
     name: "Conejo", 
     videoSrc: "assets/characters/conejo.webm", 
-    iconUrl: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-296AB88C41315EF69508E69D3CB07A20-Png/150/150/AvatarHeadshot/Webp/noFilter" 
+    iconSrc: "assets/conejoicon.png" 
   }
 ];
 
@@ -28,20 +28,26 @@ function updateCharacter(index) {
   characterName.textContent = character.name;
 }
 
-// Crear la galería de íconos dinámicamente
+// Crear la galería de íconos con el background
 function createGallery() {
   characters.forEach((character, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
 
+    // Fondo detrás del ícono
+    const background = document.createElement("div");
+    background.classList.add("background");
+
+    // Ícono del personaje
     const icon = document.createElement("img");
     icon.classList.add("icon");
-    icon.src = character.iconUrl;
+    icon.src = character.iconSrc;
     icon.alt = character.name;
 
+    card.appendChild(background);
     card.appendChild(icon);
 
-    // Agregar evento de clic para cambiar al personaje correspondiente
+    // Evento de clic en la tarjeta
     card.addEventListener("click", () => {
       currentIndex = index;
       updateCharacter(currentIndex);
