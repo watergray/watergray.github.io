@@ -63,7 +63,7 @@
   </video>
 
   <div class="info">
-    <h1 id="videoName">gato.webm</h1> <!-- Nombre del video -->
+    <h1 id="videoName">Gato</h1> <!-- Nombre del personaje -->
   </div>
 
   <div class="controls">
@@ -72,29 +72,38 @@
   </div>
 
   <script>
+    // Aquí puedes configurar directamente los nombres en un array si no usas JSON
     const videos = [
       { file: "gato.webm", name: "Gato" },
       { file: "conejo.webm", name: "Conejo" }
     ];
+
     let currentIndex = 0;
+
+    function loadVideo(index) {
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoName = document.getElementById('videoName');
+
+      videoPlayer.src = videos[index].file;
+      videoName.textContent = videos[index].name;
+      videoPlayer.play();
+    }
 
     function changeVideo(direction) {
       currentIndex += direction;
 
-      // Ciclo infinito: si se pasa, vuelve al inicio o final
+      // Ciclo infinito
       if (currentIndex < 0) {
         currentIndex = videos.length - 1;
       } else if (currentIndex >= videos.length) {
         currentIndex = 0;
       }
 
-      const videoPlayer = document.getElementById('videoPlayer');
-      const videoName = document.getElementById('videoName');
-
-      videoPlayer.src = videos[currentIndex].file;
-      videoName.textContent = videos[currentIndex].name;
-      videoPlayer.play();
+      loadVideo(currentIndex);
     }
+
+    // Cargar el primer video al inicio
+    loadVideo(currentIndex);
   </script>
 </body>
 </html>
