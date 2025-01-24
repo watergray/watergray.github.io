@@ -1,83 +1,47 @@
-// Lista de personajes con sus videos e íconos
+// script.js
 const characters = [
-  { 
-    name: "물", 
-    videoSrc: "assets/characters/gato.webm", 
-    iconSrc: "assets/gatoicon.webm" 
-  },
-  { 
-    name: "Conejo", 
-    videoSrc: "assets/characters/conejo.webm", 
-    iconSrc: "assets/conejoicon.webm" 
-  }
+    {
+        name: "Gato",
+        video: "assets/characters/gato.webm",
+        icon: "assets/gatoicon.webm"
+    },
+    {
+        name: "Conejo",
+        video: "assets/characters/conejo.webm",
+        icon: "assets/conejoicon.webm"
+    }
 ];
 
 let currentIndex = 0;
 
-// Referencias al DOM
-const videoElement = document.getElementById("character-video");
+// Elementos
+const characterVideo = document.getElementById("character-video");
 const characterName = document.getElementById("character-name");
-const prevButton = document.getElementById("prev-btn");
-const nextButton = document.getElementById("next-btn");
-const gallery = document.querySelector(".gallery");
+const leftButton = document.getElementById("left-button");
+const rightButton = document.getElementById("right-button");
+const clickSound = document.getElementById("click-sound");
 
-// Función para actualizar el video y el nombre
+// Función para actualizar el personaje
 function updateCharacter(index) {
-  const character = characters[index];
-  videoElement.src = character.videoSrc;
-  characterName.textContent = character.name;
+    const character = characters[index];
+    characterVideo.src = character.video;
+    characterName.textContent = character.name;
 }
 
-// Crear la galería de íconos con el background
-function createGallery() {
-  characters.forEach((character, index) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    // Fondo detrás del ícono
-    const background = document.createElement("div");
-    background.classList.add("background");
-
-    // Ícono del personaje
-    const icon = document.createElement("img");
-    icon.classList.add("icon");
-    icon.src = character.iconSrc;
-    icon.alt = character.name;
-
-    card.appendChild(background);
-    card.appendChild(icon);
-
-    // Evento de clic en la tarjeta
-    card.addEventListener("click", () => {
-      currentIndex = index;
-      updateCharacter(currentIndex);
-      playSound();
-    });
-
-    gallery.appendChild(card);
-  });
+// Avanzar o retroceder en la lista
+function changeCharacter(direction) {
+    clickSound.play();
+    if (direction === "left") {
+        currentIndex = (currentIndex - 1 + characters.length) % characters.length;
+    } else if (direction === "right") {
+        currentIndex = (currentIndex + 1) % characters.length;
+    }
+    updateCharacter(currentIndex);
 }
 
-// Navegar hacia el personaje anterior
-prevButton.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + characters.length) % characters.length;
-  updateCharacter(currentIndex);
-  playSound();
-});
+// Listeners para los botones
+leftButton.addEventListener("click", () => changeCharacter("left"));
+rightButton.addEventListener("click", () => changeCharacter("right"));
 
-// Navegar hacia el siguiente personaje
-nextButton.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % characters.length;
-  updateCharacter(currentIndex);
-  playSound();
-});
-
-// Reproducir sonido al cambiar de personaje
-function playSound() {
-  const audio = new Audio("assets/click.ogg");
-  audio.play();
-}
-
-// Inicializar la página
-createGallery();
+// Inicialización
 updateCharacter(currentIndex);
