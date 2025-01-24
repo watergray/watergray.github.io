@@ -1,47 +1,53 @@
-/* General */
 body {
+  margin: 0;
+  font-family: Arial, sans-serif;
   background-color: black;
   color: white;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-/* Contenedor principal */
-.container {
+.main-container {
+  display: flex;
+  gap: 30px;
+}
+
+.gallery-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Galería de personajes */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 150px);
+  grid-template-columns: repeat(4, 150px);
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 .card {
+  position: relative;
   width: 150px;
   height: 150px;
-  background: url('assets/background.png') no-repeat center;
+}
+
+.card .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('assets/background.png') no-repeat center center;
   background-size: cover;
 }
 
-.icon {
+.card .icon {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  z-index: 1;
 }
 
-/* Vista del personaje seleccionado */
-.viewer {
+.character-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,27 +57,19 @@ body {
 #character-video {
   width: 300px;
   height: 300px;
-  border: 2px solid white;
 }
 
 #character-name {
   font-size: 24px;
-  font-weight: bold;
+  text-align: center;
 }
 
-/* Botones */
-.controls {
+.buttons {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
-button {
-  background: none;
-  border: none;
+.buttons img {
+  width: 50px;
   cursor: pointer;
-}
-
-button img {
-  width: 40px;
-  height: 40px;
 }
