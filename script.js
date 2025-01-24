@@ -1,13 +1,13 @@
 // script.js
 const characters = [
     {
-        name: "Gato",
-        video: "assets/characters/gato.webm",
+        name: "고양이",
+        video: "assets/character/gato.webm",
         icon: "assets/gatoicon.webm"
     },
     {
-        name: "Conejo",
-        video: "assets/characters/conejo.webm",
+        name: "토끼",
+        video: "assets/character/conejo.webm",
         icon: "assets/conejoicon.webm"
     }
 ];
