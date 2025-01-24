@@ -7,25 +7,19 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="main-container">
     <!-- Galería de personajes -->
-    <div class="gallery">
-      <div class="card">
-        <img class="icon" src="assets/iconcard.png" alt="Icono por defecto">
-      </div>
-      <!-- Agrega más tarjetas si es necesario -->
+    <div class="gallery-container">
+      <div class="gallery"></div>
     </div>
 
-    <!-- Sección de video y botones -->
-    <div class="viewer">
-      <video id="character-video" autoplay loop muted>
-        <source src="assets/characters/gato.webm" type="video/webm">
-        Tu navegador no soporta el formato de video.
-      </video>
-      <p id="character-name">물</p>
-      <div class="controls">
-        <button id="prev-btn"><img src="assets/izquierda.png" alt="Izquierda"></button>
-        <button id="next-btn"><img src="assets/derecha.png" alt="Derecha"></button>
+    <!-- Detalle del personaje -->
+    <div class="character-detail">
+      <video id="character-video" autoplay loop></video>
+      <p id="character-name"></p>
+      <div class="buttons">
+        <img id="prev-btn" src="assets/izquierda.png" alt="Anterior">
+        <img id="next-btn" src="assets/derecha.png" alt="Siguiente">
       </div>
     </div>
   </div>
