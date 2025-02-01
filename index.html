@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personajes</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ensaya tu Ropa de Roblox</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Contenedor del video y textos -->
-        <div class="video-container">
-            <video src="assets/character/gato.webm" class="character-video" id="character-video" autoplay muted loop></video>
-            <div class="info">
-                <h2 id="character-name">Gato</h2>
-                <p id="character-description">"Siempre encuentra su camino, no importa qué tan oscuro sea."</p>
-            </div>
-        </div>
-        
-        <!-- Botones -->
-        <div class="controls">
-            <img src="assets/izquierda.png" class="button" id="left-button" alt="Izquierda">
-            <img src="assets/derecha.png" class="button" id="right-button" alt="Derecha">
-        </div>
+    <h1>Ensaya tu Ropa de Roblox</h1>
+    <div class="controls">
+        <input type="file" id="shirtTexture" accept="image/*" />
+        <input type="file" id="pantsTexture" accept="image/*" />
     </div>
-
-    <audio id="click-sound" src="assets/click.ogg"></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
