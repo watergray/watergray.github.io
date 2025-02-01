@@ -1,49 +1,64 @@
-// script.js
-const characters = [
-    {
-        video: "assets/character/gato.webm",
-        name: "Gato",
-        description: "Siempre encuentra su camino, no importa qué tan oscuro sea."
-    },
-    {
-        video: "assets/character/conejo.webm",
-        name: "Conejo",
-        description: "Rápido, ágil y siempre un paso adelante."
-    }
-];
+let scene, camera, renderer, controls, model;
 
-let currentIndex = 0;
+init();
+animate();
 
-// Elementos
-const characterVideo = document.getElementById("character-video");
-const characterName = document.getElementById("character-name");
-const characterDescription = document.getElementById("character-description");
-const leftButton = document.getElementById("left-button");
-const rightButton = document.getElementById("right-button");
-const clickSound = document.getElementById("click-sound");
+function init() {
+    // Escena
+    scene = new THREE.Scene();
 
-// Función para actualizar el personaje
-function updateCharacter(index) {
-    const character = characters[index];
-    characterVideo.src = character.video;
-    characterName.textContent = character.name;
-    characterDescription.textContent = character.description;
+    // Cámara
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 1, 5);
+
+    // Renderizador
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Controles de órbita
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+    // Luz
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(1, 1, 1).normalize();
+    scene.add(light);
+
+    // Cargar modelo 3D
+    const loader = new THREE.GLTFLoader();
+    loader.load('assets/model.glb', function (gltf) {
+        model = gltf.scene;
+        scene.add(model);
+    });
+
+    // Cargar texturas
+    document.getElementById('shirtTexture').addEventListener('change', function (event) {
+        applyTexture(event.target.files[0], 'shirt');
+    });
+
+    document.getElementById('pantsTexture').addEventListener('change', function (event) {
+        applyTexture(event.target.files[0], 'pants');
+    });
 }
 
-// Cambiar personaje con los botones
-function changeCharacter(direction) {
-    clickSound.play();
-    if (direction === "left") {
-        currentIndex = (currentIndex - 1 + characters.length) % characters.length;
-    } else if (direction === "right") {
-        currentIndex = (currentIndex + 1) % characters.length;
-    }
-    updateCharacter(currentIndex);
+function applyTexture(file, part) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        const texture = new THREE.TextureLoader().load(e.target.result);
+        if (model) {
+            model.traverse((child) => {
+                if (child.isMesh && child.name.includes(part)) {
+                    child.material.map = texture;
+                    child.material.needsUpdate = true;
+                }
+            });
+        }
+    };
+    reader.readAsDataURL(file);
 }
 
-// Listeners para los botones
-leftButton.addEventListener("click", () => changeCharacter("left"));
-rightButton.addEventListener("click", () => changeCharacter("right"));
-
-// Inicialización
-updateCharacter(currentIndex);
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+}
